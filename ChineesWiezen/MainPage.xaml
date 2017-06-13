@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="ChineesWiezen.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ChineesWiezen"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" VerticalAlignment="Center">
+        <StackPanel Margin="10">
+            <TextBlock Text="Naam van speler" Margin="10,10,10,0" />
+
+            <Grid Padding="10,0,10,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="txtNaam" KeyDown="txtNaam_KeyDown" />
+                <Button x:Name="btnToevoegen" Content="Toevoegen" Click="btnToevoegen_Click" Grid.Column="1" />
+            </Grid>
+
+            <Grid VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Zet de spelers op volgorde! De deler eerst." Margin="10" Grid.ColumnSpan="2" />
+
+                <StackPanel VerticalAlignment="Center" Grid.Row="1">
+                    <Button x:Name="btnVerwijder" HorizontalAlignment="Center" Margin="10" Content="Verwijder" Click="btnVerwijder_Click" />
+                    <Button x:Name="btnOmhoog" HorizontalAlignment="Center" Margin="10" Content="Omhoog" Click="btnOmhoog_Click" />
+                    <Button x:Name="btnOmlaag" HorizontalAlignment="Center" Margin="10" Content="Omlaag" Click="btnOmlaag_Click" />
+                </StackPanel>
+
+                <ListView x:Name="ListNames" Margin="10" BorderThickness="2" ItemsSource="{x:Bind vm.players}" Grid.Column="1" Grid.Row="1" MaxHeight="320" />
+            </Grid>
+
+            <Button x:Name="btnStart" Margin="10" Content="Spel starten" HorizontalAlignment="Center" Click="btnStart_Click" Foreground="White" Width="120" Height="40" VerticalAlignment="Bottom" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFA3C5AC" Offset="0"/>
+                        <GradientStop Color="#FF129146" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
